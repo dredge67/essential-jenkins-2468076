@@ -20,7 +20,7 @@ pipeline {
             steps {
                 dir("${env.WORKSPACE}/Ch05/05_02-publish-reports"){
                     sh 'venv/bin/flake8 --ignore=E501,E231 *.py'
-                    sh 'venv/bin/pylint --errors-only --disable=C0301 --disable=C0326 *.py'
+                    sh 'venv/bin/pylint --errors-only --disable=C0301 *.py'
                 }
             }
         }
