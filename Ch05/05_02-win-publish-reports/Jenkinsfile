@@ -27,8 +27,8 @@ pipeline {
         stage('Test') {
             steps {
                 dir("${env.WORKSPACE}/Ch05/05_02-win-publish-reports"){
-                    sh('''
-                        venv/scripts/coverage run -m pytest -v test_*.py \
+                    bat('''
+                        venv\\scripts\\coverage run -m --include=test_*.py pytest \
                             --junitxml=pytest_junit.xml
                     ''')
                 }
