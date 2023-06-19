@@ -57,7 +57,7 @@ pipeline {
             junit allowEmptyResults: true, testResults: '**/pylint_junit.xml'
 
             publishCoverage adapters: [cobertura(coberturaReportFile: '**\\coverage.xml')],
-                sourceFileResolver: level('STORE_LAST_BUILD')
+                sourceFileResolver: sourceFiles('STORE_LAST_BUILD')
         }
     }
 }
