@@ -1,6 +1,5 @@
 flask
 flake8
-pip
 pylint
 pytest
 pytest-flask
