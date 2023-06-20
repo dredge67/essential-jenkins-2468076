@@ -23,7 +23,7 @@ pipeline {
 		        dir("${env.WORKSPACE}/Ch05/05_02-publish-reports"){
 		            sh 'venv/bin/flake8 --ignore=E501,E231 *.py'
 		            // Commented out pylint because it does not finish on Oracle vm instance.
-		            // sh 'venv/bin/pylint --errors-only --disable=C0301 *.py'
+		            sh 'venv/bin/pylint --errors-only --disable=C0301 *.py'
 		        }
 		    } catch(err) {
 		    	println err
@@ -67,7 +67,7 @@ pipeline {
 
             junit allowEmptyResults: true, testResults: '**/pylint_junit.xml'
 
-            publishCoverage adapters: [cobertura('**/coverage.xml')],
+            publishCoverage adapters: [cobertura(coberturaReportFile: '**/coverage.xml')],
                 sourceFileResolver: sourceFiles('STORE_LAST_BUILD')
         }
     }
